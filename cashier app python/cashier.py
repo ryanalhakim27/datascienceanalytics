@@ -85,15 +85,15 @@ class Transaction:
                  (item_name:[item_qty, item_price]).
         '''
         try:
-            item_name=item_name.lower().strip()
-            item_qty=int(item_qty/1)
-            item_price=int(item_price/1)
+            item_name=item_name.lower().replace("_"," ").strip()
+            item_qty=int(item_qty)
+            item_price=int(item_price)
             self.item[item_name]=[]
             self.item[item_name].append(item_qty)
             self.item[item_name].append(item_price)
             print(f'{item_name} has been added to order list')
             return self.item
-        except TypeError:
+        except (ValueError,AttributionError):
             print('Wrong in input arguments. Please try again!')
     
     #Function to update the item_name
