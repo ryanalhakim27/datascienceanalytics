@@ -40,11 +40,12 @@ class Transaction:
             and list that contain item_qty and item_price as value.
 
         Examples:
-            >>> add_item('Ayam Goreng', 2, 20000)
+            >>> t1=Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
             ayam goreng has been added to order list
             {'ayam goreng': [2, 20000]}
-
-            >>> add_item('Pasta Gigi', 3, 15000)
+            
+            >>> t1.add_item('Pasta Gigi', 3, 15000)
             pasta gigi has been added to order list
             {'ayam goreng': [2, 20000], 'pasta gigi': [3, 15000]}
 
@@ -147,10 +148,13 @@ class Transaction:
         '''Remove a key-value pair in item dictonary.
 
         Examples:
-            >>> delete_item('pasta gigi')
+            >>> t1=Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
+            >>> t1.add_item('Pasta Gigi', 3, 15000)
+            >>> t1.delete_item('pasta gigi')
             pasta gigi has been deleted
             {'ayam goreng': [2, 20000]}
-
+        
         Args:
             item_name (str): The key of key-value pair that want to be removed.
 
@@ -169,7 +173,9 @@ class Transaction:
         ''' Remove all key-value pair in item dictonary.
 
         Examples:
-            >>> reset_transaction()
+            >>> t1=Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
+            >>> t1.add_item('Pasta Gigi', 3, 15000)
             Are you sure want to reset the transaction? (yes/no)yes
             All item has been deleted
             {}
