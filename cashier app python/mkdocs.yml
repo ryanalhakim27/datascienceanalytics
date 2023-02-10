@@ -5,7 +5,9 @@ theme:
 
 plugins:
   - mkdocstrings
+  - glightbox
 
 nav:
   - Welcome to Super Cashier Apps: index.md
-  - Reference: reference.md
+  - How to Use: how to use.md
+  - References: reference.md

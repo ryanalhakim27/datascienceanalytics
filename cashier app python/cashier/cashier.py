@@ -1,4 +1,4 @@
-'''Module providing class represent a transaction in a cashier system.
+''' This module providing class represent a transaction in a cashier system.
 
 This module using datetime and tabulate library.
 Datetime is used for show the transaction time.
@@ -14,6 +14,9 @@ from tabulate import tabulate
 class Transaction:
     '''
     A class to represent a cashier transaction
+
+    Examples:
+        >>> t1= Transaction()
 
     Attributes:
         item (dict): A dictionary that has item name as key,
@@ -40,11 +43,10 @@ class Transaction:
             and list that contain item_qty and item_price as value.
 
         Examples:
-            >>> t1=Transaction()
+            >>> t1 = Transaction()
             >>> t1.add_item('Ayam Goreng', 2, 20000)
             ayam goreng has been added to order list
             {'ayam goreng': [2, 20000]}
-            
             >>> t1.add_item('Pasta Gigi', 3, 15000)
             pasta gigi has been added to order list
             {'ayam goreng': [2, 20000], 'pasta gigi': [3, 15000]}
@@ -75,6 +77,15 @@ class Transaction:
     def update_item_name(self,item_name,update_item_name):
         '''Change a key of item dictionnary without change its value.
 
+        Examples:
+            >>> t1 = Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
+            ayam goreng has been added to order list
+            {'ayam goreng': [2, 20000]}
+            >>> t1.update_item_name('ayam goreng','ayam bakar')
+            item name has been updated successfully
+            {'ayam bakar': [2, 20000]}
+
         Args:
             item_name (str): The selected key that want to changed.
             update_item_name (str): The new key that replace selected key.
@@ -97,6 +108,15 @@ class Transaction:
     def update_item_qty(self,item_name,update_item_qty):
         '''Only change value[0] (defined as item_qty) of a selected key-value pair,
             and remain key and value[1] same.
+
+        Examples:
+            >>> t1 = Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
+            ayam goreng has been added to order list
+            {'ayam goreng': [2, 20000]}
+            >>> t1.update_item_qty('ayam goreng',5)
+            Quantity of ayam goreng has successfully updated
+            {'ayam goreng': [5, 20000]}
 
         Args:
             item_name (str): The selected key that has value[0] 
@@ -123,6 +143,15 @@ class Transaction:
         '''Only change value[1] (defined as item_price) of 
             a selected key-value pair, and remain key and value[0] same.
 
+        Examples:
+            >>> t1 = Transaction()
+            >>> t1.add_item('Ayam Goreng', 2, 20000)
+            ayam goreng has been added to order list
+            {'ayam goreng': [2, 20000]}
+            >>> t1.update_item_price('ayam goreng',15000)
+            Price of ayam goreng has successfully updated
+            {'ayam goreng': [2, 15000]}
+
         Args:
             item_name (str): The selected key that has 
                 value[1] that is want to changed.
@@ -148,13 +177,17 @@ class Transaction:
         '''Remove a key-value pair in item dictonary.
 
         Examples:
-            >>> t1=Transaction()
+            >>> t1 = Transaction()
             >>> t1.add_item('Ayam Goreng', 2, 20000)
+            ayam goreng has been added to order list
+            {'ayam goreng': [2, 20000]}
             >>> t1.add_item('Pasta Gigi', 3, 15000)
+            pasta gigi has been added to order list
+            {'ayam goreng': [2, 20000], 'pasta gigi': [3, 15000]}
             >>> t1.delete_item('pasta gigi')
             pasta gigi has been deleted
             {'ayam goreng': [2, 20000]}
-        
+
         Args:
             item_name (str): The key of key-value pair that want to be removed.
 
@@ -173,35 +206,34 @@ class Transaction:
         ''' Remove all key-value pair in item dictonary.
 
         Examples:
-            >>> t1=Transaction()
+            >>> t1 = Transaction()
             >>> t1.add_item('Ayam Goreng', 2, 20000)
-            >>> t1.add_item('Pasta Gigi', 3, 15000)
-            Are you sure want to reset the transaction? (yes/no)yes
+            ayam goreng has been added to order list
+            {'ayam goreng': [2, 20000]}
+            >>> t1.reset_transaction()
             All item has been deleted
             {}
 
+            This method need confirmation yes or no. If the input was no
+                reset_transaction is cancelled.
+
         Args:
-            param1 (:obj:`str`, optional): The second parameter. 
+            param1 (:obj:`str`, optional): The first parameter. 
                 Defaults to None.
 
         Returns:
             item (dict): Empty dictionary.
         '''
-        message='Are you sure want to reset the transaction? (yes/no)'
-        confirm=input(message).lower().strip()
-        if confirm == 'yes':
-            self.item={}
-            print('All item has been deleted')
-            return self.item
-        else:
-            print('Reset transaction is cancelled')
+        self.item={}
+        print('All item has been deleted')
+        print(self.item)
 
     #Function to show order list
     def check_order(self, param1=None):
         '''Show table of order list.
 
         Args:
-            param1 (:obj:`str`, optional): The second parameter. 
+            param1 (:obj:`str`, optional): The first parameter. 
                 Defaults to None.
 
         Returns:
