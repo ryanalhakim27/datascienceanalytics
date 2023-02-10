@@ -1,4 +1,10 @@
 site_name: Super Cashier Documentations
+site_url: https://ryanalhakim27.github.io/datascienceanalytics/
+site_description: Super Cashier App Documentation. Part of PACMANN Academy Assignment
+site_author: Mohammad Ryan Alhakim
+
+repo_url: https://github.com/ryanalhakim27/datascienceanalytics
+edit_uri:blob/master/docs/ 
 
 theme:
   name: "material"
